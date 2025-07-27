@@ -15,6 +15,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- New Typefaces: Montserrat for headings, Source Sans Pro for body -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="https://images.unsplash.com/photo-1581092918056-0c9c99277942?q=80&w=2070&auto=format&fit=crop" as="image">
     
     <style>
@@ -135,47 +136,18 @@
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
         </button>
     </div>
-
-    <header class="bg-secondary/90 backdrop-blur-lg sticky top-0 z-50 border-b border-default">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 focusable rounded-md">
-                <svg class="h-12 w-12 text-brand flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 50C50 50 71.6667 28.3333 95 50C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M50 50C50 50 28.3333 28.3333 5 50C28.3333 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M50 50C50 50 28.3333 71.6667 50 95C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M50 50C50 50 28.3333 28.3333 50 5C71.6667 28.3333 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="50" cy="50" r="10" fill="currentColor"/>
-                </svg>
-                <div>
-                    <span class="font-heading text-2xl font-bold text-primary">NucleusDojo</span>
-                    <p class="text-xs text-secondary -mt-1">Arsalan A Khan copyright portfolio @timedilationV2</p>
-                </div>
-            </a>
-            <div class="hidden md:flex items-center space-x-10">
-                <a href="#crisis" class="nav-link text-secondary font-semibold">The Challenge</a>
-                <a href="#solution" class="nav-link text-secondary font-semibold">The Solution</a>
-                <a href="#applications" class="nav-link text-secondary font-semibold">Applications</a>
-                <a href="#technology" class="nav-link text-secondary font-semibold">Technology</a>
-                <a href="about.html" class="nav-link text-secondary font-semibold">About</a>
-                <a href="faq.html" class="nav-link text-secondary font-semibold">FAQs</a>
-                <a href="#contact" class="bg-accent text-white font-semibold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity focusable">Request Assessment</a>
-            </div>
-            <button id="nav-toggle-btn" aria-label="Open main menu" class="md:hidden text-primary focusable rounded-md">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <div id="nav-menu-content" class="hidden md:hidden bg-secondary">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#crisis" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Challenge</a>
-                <a href="#solution" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Solution</a>
-                <a href="#applications" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Applications</a>
-                <a href="#technology" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Technology</a>
-                <a href="about.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">About</a>
-                <a href="faq.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">FAQs</a>
-                <a href="#contact" class="bg-accent text-white block w-full text-left mt-2 px-3 py-2 rounded-md text-base font-semibold">Request Assessment</a>
-            </div>
-        </div>
-    </header>
+<header>
+  <div class="nav-container">
+    <h1 class="site-logo"><a href="index.html">Nucleus Dojo</a></h1>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
     <main>
         <section id="hero" class="relative text-white min-h-[60vh] flex items-center bg-gradient-to-br from-blue-700 to-cyan-500">
@@ -396,34 +368,12 @@
         </section>
     </main>
 
-    <footer class="bg-primary border-t border-default">
-        <div class="container mx-auto px-6 py-8 text-center text-secondary">
-             <div class="flex justify-center mb-6">
-                <a href="#" class="flex items-center gap-3">
-                    <svg class="h-10 w-10 text-brand" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 50C50 50 71.6667 28.3333 95 50C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M50 50C50 50 28.3333 28.3333 5 50C28.3333 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M50 50C50 50 28.3333 71.6667 50 95C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M50 50C50 50 28.3333 28.3333 50 5C71.6667 28.3333 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
-                    </svg>
-                    <span class="font-serif text-xl font-bold text-primary">NucleusDojo</span>
-                </a>
-             </div>
-             <div class="mb-4">
-                <p>Arsalan A. Khan | @timedilationv2 &lt; git</p>
-                <p>Lynnwood, Washington</p>
-                <p>arifkhanarsalan@gmail.com</p>
-            </div>
-            <div class="flex justify-center items-center gap-4 mb-4">
-                <img src="https://placehold.co/100x100/1e3a8a/f0f4f8?text=ISO+9001" alt="ISO 9001 Certification Badge" class="h-16 w-auto">
-                <p class="text-sm">Quality Management Certified</p>
-            </div>
-            <p>&copy; 2024 Nucleus Dojo. All rights reserved.</p>
-            <p class="text-sm mt-2">This page is a conceptual demonstration. Data is based on publicly available information from 2017 for illustrative purposes.</p>
-            <p class="mt-6"><a href="#hero" class="nav-link text-primary font-semibold">Back to Top</a></p>
-        </div>
-    </footer>
+<footer>
+  <div class="footer-container">
+    <p>&copy; 2025 Arsalan A. Khan. All rights reserved.</p>
+    <p><small>Built with 💻 in the CLI.</small></p>
+  </div>
+</footer>
     <!-- AuthSig: dGltZWRpbGF0aW9udjIuZ2l0aHViLmlv -->
 
     <script>
