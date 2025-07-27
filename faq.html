@@ -1,17 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FAQs | NucleusDojo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <!--
+    ++ Execution Core: NucleusDojo FAQ Script ++
+    ++ Author: Arsalan A. Khan (@timedilationv2) ++
+    ++ Build: Terminal-Born, CLI-Native ++
+    ++ Directive: Structure and animate frequently asked questions. ++
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nucleus Dojo - FAQ</title>
+    <meta name="author" content="Arsalan Khan | timedilationv2 | CLI-native creator">
+    <meta name="robots" content="noai, noimageai">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts: Montserrat for headings, Source Sans Pro for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Color Palette: Glossy Shades of Blue */
+            --bg-primary: #f0f4f8;      /* Light, cool gray */
+            --bg-secondary: #ffffff;   /* Clean white for cards */
+            --text-primary: #1e3a8a;   /* Deep navy blue */
+            --text-secondary: #6b7280; /* Muted gray */
+            --color-accent: #0ea5e9;   /* Vibrant cyan */
+            --color-brand: #1e3a8a;    /* Deep navy blue */
+            --border-color: #d1d5db;   /* Soft gray for borders */
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-primary);
+        }
+
+        .bg-primary { background-color: var(--bg-primary); }
+        .bg-secondary { background-color: var(--bg-secondary); }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-accent { color: var(--color-accent); }
+        .text-brand { color: var(--color-brand); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-brand { background-color: var(--color-brand); }
+        .border-default { border-color: var(--border-color); }
+
+        /* Styles for the FAQ accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px; /* Adjust as needed */
+        }
+        .faq-item.open .chevron-icon {
+            transform: rotate(90deg);
+        }
+        .chevron-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        /* Active state for sidebar navigation */
+        .sidebar-link.active {
+            background-color: var(--bg-primary);
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+    </style>
 </head>
-<body class="bg-primary">
+<body data-creator="timedilationv2">
+    <div id="auth-mark" style="display:none;">dGltZWRpbGF0aW9udjI=</div>
+
     <header class="bg-secondary/90 backdrop-blur-lg sticky top-0 z-50 border-b border-default">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3 focusable rounded-md">
+            <a href="#" class="flex items-center gap-3">
                 <svg class="h-12 w-12 text-brand flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M50 50C50 50 71.6667 28.3333 95 50C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M50 50C50 50 28.3333 28.3333 5 50C28.3333 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -24,112 +91,201 @@
                     <p class="text-xs text-secondary -mt-1">Arsalan A Khan copyright portfolio @timedilationV2</p>
                 </div>
             </a>
-            <div class="hidden md:flex items-center space-x-10">
-                <a href="index.html#crisis" class="nav-link text-secondary font-semibold">The Challenge</a>
-                <a href="index.html#solution" class="nav-link text-secondary font-semibold">The Solution</a>
-                <a href="index.html#applications" class="nav-link text-secondary font-semibold">Applications</a>
-                <a href="index.html#technology" class="nav-link text-secondary font-semibold">Technology</a>
-                <a href="about.html" class="nav-link text-secondary font-semibold">About</a>
-                <a href="faq.html" class="nav-link text-secondary font-semibold">FAQs</a>
-                <a href="index.html#contact" class="bg-accent text-white font-semibold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity focusable">Request Assessment</a>
-            </div>
-            <button id="nav-toggle-btn" aria-label="Open main menu" class="md:hidden text-primary focusable rounded-md">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <a href="./asf_refined.html" class="bg-accent text-white font-semibold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity">Back to Main Page</a>
         </nav>
-        <div id="nav-menu-content" class="hidden md:hidden bg-secondary">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html#crisis" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Challenge</a>
-                <a href="index.html#solution" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Solution</a>
-                <a href="index.html#applications" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Applications</a>
-                <a href="index.html#technology" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Technology</a>
-                <a href="about.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">About</a>
-                <a href="faq.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">FAQs</a>
-                <a href="index.html#contact" class="bg-accent text-white block w-full text-left mt-2 px-3 py-2 rounded-md text-base font-semibold">Request Assessment</a>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <div class="text-center mb-16">
+            <h1 class="font-heading text-5xl md:text-6xl font-bold">Frequently Asked Questions</h1>
+            <p class="mt-4 text-lg text-secondary max-w-2xl mx-auto">Find answers to common questions about Combined Heat and Power (CHP) technology and our solutions.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12">
+            <!-- Sticky Sidebar Navigation -->
+            <aside class="md:w-1/4 md:sticky top-28 h-full">
+                <div class="p-4 bg-secondary rounded-lg border border-default shadow-sm">
+                    <h3 class="font-heading font-bold text-lg mb-4">Categories</h3>
+                    <nav id="faq-sidebar" class="flex flex-col gap-2">
+                        <a href="#general" class="sidebar-link p-3 rounded-md hover:bg-primary transition-colors">General Questions</a>
+                        <a href="#technical" class="sidebar-link p-3 rounded-md hover:bg-primary transition-colors">Technical Details</a>
+                        <a href="#financial" class="sidebar-link p-3 rounded-md hover:bg-primary transition-colors">Financial & ROI</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- FAQ Content -->
+            <div class="md:w-3/4">
+                <div class="mb-8 flex flex-col sm:flex-row gap-4">
+                    <div class="relative flex-grow">
+                        <input type="text" id="faq-search" placeholder="Search questions..." class="w-full p-3 pl-10 rounded-lg border border-default focus:ring-2 focus:ring-accent focus:outline-none">
+                        <svg class="w-5 h-5 text-gray-400 absolute top-1/2 left-3 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="expand-all-btn" class="flex-1 bg-brand text-white font-semibold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">Expand All</button>
+                        <button id="collapse-all-btn" class="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors">Collapse All</button>
+                    </div>
+                </div>
+
+                <div id="faq-container" class="space-y-4">
+                    <!-- General Questions -->
+                    <div id="general" class="faq-category">
+                        <h2 class="font-heading text-3xl font-bold mb-6 border-b border-default pb-3">General Questions</h2>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>What is Combined Heat and Power (CHP)?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>Combined Heat and Power (CHP), also known as cogeneration, is the simultaneous production of electricity and useful heat from a single fuel source. Instead of wasting the heat generated during electricity production, a CHP system captures it and converts it into useful thermal energy, such as steam or hot water, for industrial processes.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>Why is CHP so important for a country like Pakistan?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>In a country facing significant energy challenges like grid deficits and unreliable fuel supply, CHP offers a powerful solution. It provides energy independence from an unstable national grid, reduces operational costs by increasing fuel efficiency to over 90%, and enhances energy security, allowing industries to maintain production even during periods of load shedding or gas curtailment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Details -->
+                    <div id="technical" class="faq-category pt-12">
+                        <h2 class="font-heading text-3xl font-bold mb-6 border-b border-default pb-3">Technical Details</h2>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>What kind of fuel do these CHP systems use?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>Our primary solutions are built on reciprocating gas engines that run on cost-effective natural gas. However, to provide complete energy security, we also offer dual-fuel engines.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>What is a "dual-fuel" engine?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>A dual-fuel engine is a highly versatile system that can operate on both natural gas and a liquid fuel (like diesel). This allows the plant to seamlessly switch to the backup liquid fuel during periods of natural gas supply cuts, ensuring uninterrupted power generation and complete operational resilience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial & ROI -->
+                    <div id="financial" class="faq-category pt-12">
+                        <h2 class="font-heading text-3xl font-bold mb-6 border-b border-default pb-3">Financial & ROI</h2>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>What is the typical Return on Investment (ROI) for a CHP plant?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>While the exact ROI depends on factors like facility size, energy usage, and local fuel costs, many industrial CHP projects see a full return on investment within 3 to 5 years. This is driven by significant reductions in energy expenditure (often over 30%) and the elimination of production losses caused by grid outages.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item bg-secondary rounded-lg border border-default overflow-hidden">
+                            <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-lg">
+                                <span>How do I get a detailed financial assessment for my facility?</span>
+                                <svg class="chevron-icon w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-6 text-secondary">
+                                <p>You can start by clicking the "Request Assessment" button on our website. Our engineers will provide a complimentary, no-obligation feasibility study for your facility, which includes a detailed analysis of potential savings, ROI, and system recommendations tailored to your specific needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
-  <section class="py-20">
-    <div class="container mx-auto px-6">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="heading-decorator flex justify-center items-center gap-4 mb-4">
-          <div class="diamond"></div>
-          <h2 class="text-4xl md:text-5xl font-bold font-heading">Frequently Asked Questions</h2>
-          <div class="diamond"></div>
-        </div>
-        <p class="text-secondary text-lg">Everything you need to know before implementing on-site energy systems.</p>
-      </div>
+    </main>
 
-      <div class="max-w-4xl mx-auto space-y-6">
-        <div class="bg-secondary rounded-lg shadow-md border border-default p-6">
-          <button class="w-full flex justify-between items-center font-semibold text-left text-lg text-primary focus:outline-none toggle-btn">
-            What is CHP and how does it work?
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="mt-3 hidden toggle-content text-secondary">
-            Combined Heat and Power (CHP) simultaneously produces electricity and useful heat from a single fuel source, drastically improving efficiency and cutting costs.
-          </div>
+    <footer class="bg-primary border-t border-default mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-secondary">
+             <div class="flex justify-center mb-6">
+                <a href="#" class="flex items-center gap-3">
+                    <svg class="h-10 w-10 text-brand" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 50C50 50 71.6667 28.3333 95 50C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 50C50 50 28.3333 28.3333 5 50C28.3333 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 50C50 50 28.3333 71.6667 50 95C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 50C50 50 28.3333 28.3333 50 5C71.6667 28.3333 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                    </svg>
+                    <span class="font-serif text-xl font-bold text-primary">NucleusDojo</span>
+                </a>
+             </div>
+             <div class="mb-4">
+                <p>Arsalan A. Khan | @timedilationv2 &lt; git</p>
+                <p>Lynnwood, Washington</p>
+                <p>arifkhanarsalan@gmail.com</p>
+            </div>
+            <div class="flex justify-center items-center gap-4 mb-4">
+                <img src="https://placehold.co/100x100/1e3a8a/f0f4f8?text=ISO+9001" alt="ISO 9001 Certification Badge" class="h-16 w-auto">
+                <p class="text-sm">Quality Management Certified</p>
+            </div>
+            <p>&copy; 2024 Nucleus Dojo. All rights reserved.</p>
+            <p class="text-sm mt-2">This page is a conceptual demonstration. Data is based on publicly available information from 2017 for illustrative purposes.</p>
         </div>
+    </footer>
+    <!-- AuthSig: dGltZWRpbGF0aW9udjIuZ2l0aHViLmlv -->
 
-        <div class="bg-secondary rounded-lg shadow-md border border-default p-6">
-          <button class="w-full flex justify-between items-center font-semibold text-left text-lg text-primary focus:outline-none toggle-btn">
-            Is CHP right for my factory size?
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="mt-3 hidden toggle-content text-secondary">
-            CHP scales across industries. Installations range from 500 kW microgrids to 10+ MW industrial clusters. Feasibility depends on your thermal and electrical profile.
-          </div>
-        </div>
+    <script>
+        // ++ Execution Core: NucleusDojo FAQ Interaction Controller ++
+        // ++ Author: Arsalan A. Khan (@timedilationv2) ++
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const searchInput = document.getElementById('faq-search');
+            const expandAllBtn = document.getElementById('expand-all-btn');
+            const collapseAllBtn = document.getElementById('collapse-all-btn');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const faqCategories = document.querySelectorAll('.faq-category');
 
-        <div class="bg-secondary rounded-lg shadow-md border border-default p-6">
-          <button class="w-full flex justify-between items-center font-semibold text-left text-lg text-primary focus:outline-none toggle-btn">
-            What fuel sources are compatible?
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="mt-3 hidden toggle-content text-secondary">
-            Most CHP units use natural gas, but dual-fuel engines can switch to diesel or furnace oil. Biomass and biogas are viable in certain cases.
-          </div>
-        </div>
+            // --- Accordion Logic ---
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('open');
+                });
+            });
 
-        <div class="bg-secondary rounded-lg shadow-md border border-default p-6">
-          <button class="w-full flex justify-between items-center font-semibold text-left text-lg text-primary focus:outline-none toggle-btn">
-            How fast is ROI on CHP systems?
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="mt-3 hidden toggle-content text-secondary">
-            ROI ranges between 2–5 years depending on system capacity, gas pricing, and downtime reduction. Our feasibility study outlines this in detail.
-          </div>
-        </div>
+            // --- Expand/Collapse All Logic ---
+            expandAllBtn.addEventListener('click', () => {
+                faqItems.forEach(item => item.classList.add('open'));
+            });
+            collapseAllBtn.addEventListener('click', () => {
+                faqItems.forEach(item => item.classList.remove('open'));
+            });
 
-        <div class="bg-secondary rounded-lg shadow-md border border-default p-6">
-          <button class="w-full flex justify-between items-center font-semibold text-left text-lg text-primary focus:outline-none toggle-btn">
-            Do you offer installation and maintenance?
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="mt-3 hidden toggle-content text-secondary">
-            Yes. Our turnkey services include engineering, procurement, installation, and 24/7 O&M support through local partners.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+            // --- Search Filter Logic ---
+            searchInput.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                faqItems.forEach(item => {
+                    const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    if (questionText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // --- Sidebar Scrollspy Logic ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const link = document.querySelector(`.sidebar-link[href="#${id}"]`);
+                    if (entry.isIntersecting) {
+                        sidebarLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px" });
 
-<footer>
-  <div class="footer-container">
-    <p>&copy; 2025 Arsalan A. Khan. All rights reserved.</p>
-    <p><small>Built with 💻 in the CLI.</small></p>
-  </div>
-</footer>
-  <script src="script.js"></script>
+            faqCategories.forEach(category => {
+                observer.observe(category);
+            });
+        });
+    </script>
 </body>
 </html>
