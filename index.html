@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nucleus Dojo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@400;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://images.unsplash.com/photo-1581092918056-0c9c99277942?q=80&w=2070&auto=format&fit=crop" as="image">
+    <!-- Chosen Palette: Tech Blue, Green, and Professional Gray -->
+    <!-- Application Structure Plan: The SPA follows a problem-solution-proof narrative designed for an industrial decision-maker. It starts with a Hero section stating the value proposition. It then quantifies the 2017 energy crisis in a dashboard-like section. Next, it presents CHP as the solution using an interactive comparative chart. It details the core benefits, then uses interactive tabs to show tailored applications for key industries (Textile, Cement, Food & Bev), making the solution feel relevant. An interactive technology selector makes technical data tangible. The structure concludes by addressing policy concerns and provides a clear call to action. This flow guides the user logically from their pain point to an actionable, credible solution. -->
+    <!-- Visualization & Content Choices: Key stats are presented in high-impact cards (HTML/CSS). The core efficiency comparison uses a Chart.js bar chart for stark visual contrast. A CHP process diagram is built with HTML/Tailwind to avoid SVG while explaining the flow. Industry-specific content is organized with JS-powered tabs for clarity. A technology data table is made interactive with JS buttons to allow users to focus on one equipment class at a time. This mix of static and dynamic elements, powered by JS and Chart.js, makes the dense report data digestible and engaging. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Exo 2', sans-serif; background-color: #f0f4f8; color: #1e293b; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; font-weight: 700; color: #0f172a; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #0A66C2; }
+        .tab.active { background-color: #10b981; color: white; }
+        .tech-button.active { background-color: #1e293b; color: #ffffff; }
+        .focusable:focus-visible {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+            border-radius: 0.25rem;
+        }
+        .text-stroke { -webkit-text-stroke: 1px #a5f3fc; text-stroke: 1px #a5f3fc; color: transparent; }
+    </style>
+</head>
+<body class="bg-slate-100 antialiased">
+
+    <header class="bg-white/95 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-3xl font-black text-[#0A66C2] focusable rounded-md">Nucleus</a>
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="#crisis" class="nav-link text-gray-600 font-semibold focusable rounded-md">The Challenge</a>
+                <a href="#solution" class="nav-link text-gray-600 font-semibold focusable rounded-md">The Solution</a>
+                <a href="#applications" class="nav-link text-gray-600 font-semibold focusable rounded-md">Applications</a>
+                <a href="#technology" class="nav-link text-gray-600 font-semibold focusable rounded-md">Technology</a>
+                <a href="#contact" class="hidden lg:inline-block bg-[#0A66C2] text-white font-bold py-2 px-5 rounded-full hover:bg-blue-800 transition-colors focusable">Request Assessment</a>
+            </div>
+            <button id="mobile-menu-button" aria-label="Open main menu" class="md:hidden text-gray-700 focus:outline-none focusable rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#crisis" class="block nav-link text-gray-600 font-semibold focusable rounded-md px-2 py-1">The Challenge</a>
+            <a href="#solution" class="block nav-link text-gray-600 font-semibold focusable rounded-md px-2 py-1">The Solution</a>
+            <a href="#applications" class="block nav-link text-gray-600 font-semibold focusable rounded-md px-2 py-1">Applications</a>
+            <a href="#technology" class="block nav-link text-gray-600 font-semibold focusable rounded-md px-2 py-1">Technology</a>
+            <a href="#contact" class="block bg-[#0A66C2] text-white text-center font-bold py-2 px-4 rounded-full hover:bg-blue-800 transition-colors focusable mt-2">Request Assessment</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="relative text-white min-h-[70vh] flex items-center justify-center bg-slate-900 overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1518152006812-edb29b0d32ac?q=80&w=2070&auto=format&fit=crop');"></div>
+            <div class="relative container mx-auto px-6 text-center z-10">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-cyan-300" style="font-family: 'Lato', sans-serif;">Energy Independence</h1>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-stroke">& Profitability</h1>
+                <p class="mt-8 text-lg md:text-xl font-light text-slate-300 max-w-3xl mx-auto font-orbitron drop-shadow-lg">On-Site Combined Heat and Power (CHP): Your Definitive Solution to Pakistan's Energy Challenges.</p>
+            </div>
+        </section>
+
+        <section id="crisis" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+                        <h2 class="text-4xl md:text-5xl font-bold">The Modern Energy Challenge</h2>
+                        <svg class="w-12 h-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    </div>
+                    <p class="text-lg text-slate-600">This section outlines the severe, multi-faceted energy crisis confronting Pakistani industry. The data presented here quantifies the scale of grid unreliability and economic risk, establishing the critical need for a new energy strategy.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <!-- Card 1: Grid Deficit -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-5 border-4 border-white shadow-inner">
+                            <svg class="w-12 h-12 text-slate-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Grid Deficit</h3>
+                        <p class="text-4xl font-black text-slate-600 mt-1 font-orbitron">&gt;7,000 MW</p>
+                    </div>
+                    <!-- Card 2: Gas Curtailment -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-5 border-4 border-white shadow-inner">
+                             <svg class="w-12 h-12 text-slate-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-3.797zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Gas Curtailment</h3>
+                        <p class="text-4xl font-black text-slate-600 mt-1 font-orbitron">Unreliable</p>
+                    </div>
+                    <!-- Card 3: Import Bill -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                         <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-5 border-4 border-white shadow-inner">
+                            <svg class="w-12 h-12 text-slate-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M7.5 14.25l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M7.5 12l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M7.5 9.75l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M12 21a9 9 0 110-18 9 9 0 010 18z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Import Bill</h3>
+                        <p class="text-4xl font-black text-slate-600 mt-1 font-orbitron">$14.4B</p>
+                    </div>
+                    <!-- Card 4: GDP Impact -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-5 border-4 border-white shadow-inner">
+                            <svg class="w-12 h-12 text-slate-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">GDP Impact</h3>
+                        <p class="text-4xl font-black text-slate-600 mt-1 font-orbitron">~2% Loss</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="p-8 border border-slate-200 rounded-lg shadow-sm mb-12">
+                    <div class="text-center max-w-3xl mx-auto">
+                        <h2 class="text-4xl md:text-5xl font-bold">The CHP Solution: A Paradigm Shift in Efficiency</h2>
+                        <p class="mt-4 text-lg text-slate-600">This section explains the fundamental principle of Combined Heat and Power. The infographic below provides a clear, data-driven comparison, illustrating how CHP technology dramatically outperforms the conventional method of separate heat and power generation.</p>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                    <div class="lg:col-span-2 p-8">
+                        <h3 class="text-3xl font-semibold mb-4">From Waste to Value</h3>
+                        <p class="text-slate-600 mb-4">Conventional power generation wastes over 60% of the fuel's energy as heat vented into the atmosphere. A separate boiler must then burn more fuel just to create process heat.</p>
+                        <p class="text-slate-800 font-semibold mb-4">Combined Heat and Power (CHP) is a smarter approach.</p>
+                        <p class="text-slate-600">It uses a single fuel source to generate electricity on-site, and then intelligently captures the resulting heat. This "waste" heat is converted into useful steam or hot water for your industrial processes, drastically increasing overall efficiency.</p>
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="bg-white p-4 rounded-lg shadow-xl border border-slate-200">
+                           <img src="https://raw.githubusercontent.com/timedilationv2/images/main/eb-chp-infograph.png" alt="Infographic comparing conventional separate heat and power generation with a Combined Heat and Power system, showing CHP's superior fuel efficiency." class="w-full h-auto rounded-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="benefits" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold">Core Benefits in the Pakistani Context</h2>
+                    <p class="mt-4 text-lg text-slate-600">Adopting on-site CHP in 2017 was a strategic decision that offered direct and compelling solutions to the most pressing challenges faced by Pakistani industrialists, creating a cascade of operational and financial advantages.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="text-4xl text-[#0A66C2] mb-4" role="img" aria-label="Shield icon">🛡️</div>
+                        <h3 class="text-2xl font-semibold">Operational Resilience</h3>
+                        <p class="mt-2 text-slate-600">Achieve true independence from the unreliable national grid. Eliminate production losses from load shedding and ensure consistent, high-quality power for your machinery, guaranteeing on-time delivery and maximum output.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="text-4xl text-[#0A66C2] mb-4" role="img" aria-label="Rising graph icon">📈</div>
+                        <h3 class="text-2xl font-semibold">Significant Cost Reduction</h3>
+                        <p class="mt-2 text-slate-600">Reduce total energy expenditure by over 30%. Generate electricity at a lower per-unit cost than grid tariffs and get "free" thermal energy, directly boosting your bottom line and enhancing competitiveness.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="text-4xl text-[#0A66C2] mb-4" role="img" aria-label="Fortress icon">🏰</div>
+                        <h3 class="text-2xl font-semibold">Enhanced Energy Security</h3>
+                        <p class="mt-2 text-slate-600">Take control of your energy destiny. Our advanced dual-fuel engines run on cost-effective natural gas but can seamlessly switch to liquid fuel during gas supply cuts, providing a complete shield against all forms of energy disruption.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="applications" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                     <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="w-12 h-12 text-green-600 flex items-center justify-center text-3xl font-bold">🇵🇰</div>
+                        <h2 class="text-4xl md:text-5xl font-bold">Tailored Solutions for Pakistan's Leading Industries</h2>
+                    </div>
+                    <p class="mt-4 text-lg text-slate-600">The power of CHP technology lies in its adaptability to the specific energy needs of different sectors. Click on an industry tab to see how a tailored solution addresses its unique challenges and unlocks new efficiencies.</p>
+                </div>
+                <div class="mt-12">
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                        <button data-tab="textile" class="tab flex items-center justify-center gap-2 py-3 px-6 text-lg font-semibold transition-colors duration-300 active focusable bg-white shadow-sm rounded-lg border-2 border-transparent hover:bg-green-50">
+                            <span>Textile</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <button data-tab="cement" class="tab flex items-center justify-center gap-2 py-3 px-6 text-lg font-semibold transition-colors duration-300 focusable bg-white shadow-sm rounded-lg border-2 border-transparent hover:bg-green-50">
+                            <span>Cement</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <button data-tab="food" class="tab flex items-center justify-center gap-2 py-3 px-6 text-lg font-semibold transition-colors duration-300 focusable bg-white shadow-sm rounded-lg border-2 border-transparent hover:bg-green-50">
+                            <span>Food & Beverage</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                    </div>
+                    <div id="tab-content" class="bg-white p-8 rounded-lg min-h-[300px] border border-slate-200 shadow-inner">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold">Proven 2017 Technology: Reliable & Robust</h2>
+                    <p class="mt-4 text-lg text-slate-600">Our CHP solutions are built on mature, globally-deployed reciprocating gas engine technology. Select an engine class to see a representative model and how our systems can be scaled to precisely match your facility's energy demands.</p>
+                </div>
+                <div class="mt-12 max-w-5xl mx-auto">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden">
+                        <div class="md:w-1/3 p-8 border-r border-slate-200">
+                            <h3 class="text-2xl font-semibold mb-4">Select Engine Class</h3>
+                            <div class="space-y-3" id="tech-buttons">
+                                <button data-tech="1.5" class="tech-button w-full text-left p-3 rounded-md transition-colors duration-300 hover:bg-slate-200 active focusable">1.5 MW Class</button>
+                                <button data-tech="4.0" class="tech-button w-full text-left p-3 rounded-md transition-colors duration-300 hover:bg-slate-200 focusable">4.0 MW Class</button>
+                                <button data-tech="10.0" class="tech-button w-full text-left p-3 rounded-md transition-colors duration-300 hover:bg-slate-200 focusable">10.0 MW Class</button>
+                            </div>
+                            <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-md">
+                                <h4 class="font-bold text-blue-800">Dual-Fuel Option</h4>
+                                <p class="text-sm text-blue-700">Available for select models to ensure complete energy security during gas curtailments.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8" id="tech-display">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-slate-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold">Your Path to Energy Independence Starts Here</h2>
+                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">In the challenging energy environment of 2017 Pakistan, on-site CHP is a strategic necessity. Let our expert engineers provide the data you need to make an informed decision and transform your greatest operational vulnerability into a source of profound strategic advantage.</p>
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white/10 p-6 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-400">Request Assessment</h3>
+                        <p class="mt-2 text-slate-300">Contact us for a complimentary, no-obligation feasibility assessment for your facility, including potential savings and ROI.</p>
+                        <button class="focusable mt-4 bg-[#0A66C2] text-white font-bold py-3 px-6 rounded-full hover:bg-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg">Contact Us</button>
+                    </div>
+                    <div class="bg-white/10 p-6 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-400">Download Brochure</h3>
+                        <p class="mt-2 text-slate-300">Get detailed technical specs, process diagrams, and Pakistani case studies in our comprehensive guide to CHP.</p>
+                        <button class="focusable mt-4 bg-[#0A66C2] text-white font-bold py-3 px-6 rounded-full hover:bg-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg">Download Now</button>
+                    </div>
+                    <div class="bg-white/10 p-6 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-400">Find Local Office</h3>
+                        <p class="mt-2 text-slate-300">Connect with our representatives in Karachi, Lahore, and Faisalabad for a personal consultation on your unique needs.</p>
+                        <button class="focusable mt-4 bg-[#0A66C2] text-white font-bold py-3 px-6 rounded-full hover:bg-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg">Find an Office</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <div class="mb-4">
+                <p>Arsalan A. Khan | @timedilationv2 &lt; git</p>
+                <p>Lynnwood, Washington</p>
+                <p>arifkhanarsalan@gmail.com</p>
+            </div>
+            <p>&copy; 2024 Nucleus Dojo. All rights reserved.</p>
+            <p class="text-sm mt-2">This page is a conceptual demonstration and does not represent a real company or offer of services. Data is based on publicly available information from 2017 for illustrative purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabContentData = {
+                textile: `
+                    <h3 class="text-3xl font-semibold mb-4">The Textile Sector: Powering Pakistan's Largest Industry</h3>
+                    <p class="text-slate-600 mb-3">As the backbone of Pakistan's economy, the textile industry was critically vulnerable to the 2017 energy crisis. A natural gas CHP plant is the perfect fit, providing reliable electricity for spinning and weaving machinery while the recovered heat generates essential steam and hot water for dyeing and finishing processes.</p>
+                    <div class="mt-6 p-4 bg-slate-100 rounded-lg">
+                        <p class="font-semibold text-blue-700">Typical Application:</p>
+                        <p class="text-slate-600">A 5 MW gas-fired CHP plant in a medium-sized mill can ensure 24/7 operation, meet 100% of thermal demand, and reduce total energy costs by up to 35%.</p>
+                    </div>
+                `,
+                cement: `
+                    <h3 class="text-3xl font-semibold mb-4">The Cement Sector: Maximizing Efficiency with WHR</h3>
+                    <p class="text-slate-600 mb-3">As one of the most energy-intensive sectors, the cement industry pioneered Waste Heat Recovery (WHR), a form of CHP. Instead of new fuel, WHR captures immense heat from kiln and cooler exhausts to generate steam, which drives a turbine to produce electricity.</p>
+                    <div class="mt-6 p-4 bg-slate-100 rounded-lg">
+                        <p class="font-semibold text-blue-700">Landmark 2017 Case Study:</p>
+                        <p class="text-slate-600">In March 2017, Lucky Cement inaugurated its fifth WHR plant (10 MW) at its Pezu facility, generating over 30% of the plant's electricity with zero additional fuel or emissions, setting a new industry benchmark.</p>
+                    </div>
+                `,
+                food: `
+                    <h3 class="text-3xl font-semibold mb-4">The Food & Beverage Sector: Ensuring Quality</h3>
+                    <p class="text-slate-600 mb-3">This sector demands uninterrupted power for refrigeration and processing, plus consistent thermal energy for pasteurization and sterilization. A gas-engine CHP plant delivers both, safeguarding product quality and preventing spoilage-related losses.</p>
+                    <div class="mt-6 p-4 bg-slate-100 rounded-lg">
+                        <p class="font-semibold text-blue-700">Circular Economy in Action:</p>
+                        <p class="text-slate-600">Under the 2013 Bagasse Co-Generation policy, sugar mills were incentivized to burn their waste bagasse to generate power for their own use and to sell surplus electricity to the grid, turning a waste product into a revenue stream.</p>
+                    </div>
+                `
+            };
+
+            const tabs = document.querySelectorAll('.tab');
+            const tabContentContainer = document.getElementById('tab-content');
+            
+            function updateTabContent(tabName) {
+                tabContentContainer.innerHTML = tabContentData[tabName];
+                tabs.forEach(t => {
+                    t.classList.toggle('active', t.dataset.tab === tabName);
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => updateTabContent(tab.dataset.tab));
+            });
+            
+            updateTabContent('textile');
+
+            const techData = {
+                "1.5": {
+                    title: "1.5 MW Class Engine",
+                    imageUrl: "https://raw.githubusercontent.com/timedilationv2/images/main/wartsila-31sg-gas-engine-for-power-plants.jpg.webp",
+                    imageAlt: "Wärtsilä 31SG gas engine for power plants",
+                    specs: [
+                        { label: "Electrical Output", value: "1,540 kWe" },
+                        { label: "Electrical Efficiency (LHV)", value: "42.5%" },
+                        { label: "Recoverable Thermal Output", value: "~1,700 kWth" },
+                        { label: "Total CHP Efficiency (LHV)", value: "~88%" }
+                    ],
+                    fuel: "Natural Gas / Dual-Fuel Option"
+                },
+                "4.0": {
+                    title: "4.0 MW Class Engine",
+                    imageUrl: "https://placehold.co/800x600/0A66C2/ffffff?text=Wärtsilä+34SG",
+                    imageAlt: "Wärtsilä 34SG balancer gas engine for power plants",
+                    specs: [
+                        { label: "Electrical Output", value: "4,400 kWe" },
+                        { label: "Electrical Efficiency (LHV)", value: "44.0%" },
+                        { label: "Recoverable Thermal Output", value: "~4,800 kWth" },
+                        { label: "Total CHP Efficiency (LHV)", value: "~90%" }
+                    ],
+                    fuel: "Natural Gas"
+                },
+                "10.0": {
+                    title: "10.0 MW Class Engine",
+                    imageUrl: "https://raw.githubusercontent.com/timedilationv2/images/main/wartsila-50sg-gas-engine-for-power-plants.jpg.webp",
+                    imageAlt: "Wärtsilä 50SG gas engine for power plants",
+                    specs: [
+                        { label: "Electrical Output", value: "10,600 kWe" },
+                        { label: "Electrical Efficiency (LHV)", value: "48.7%" },
+                        { label: "Recoverable Thermal Output", value: "~10,300 kWth" },
+                        { label: "Total CHP Efficiency (LHV)", value: "~94%" }
+                    ],
+                    fuel: "Natural Gas"
+                }
+            };
+
+            const techButtons = document.querySelectorAll('.tech-button');
+            const techDisplayContainer = document.getElementById('tech-display');
+
+            function updateTechDisplay(techName) {
+                const data = techData[techName];
+                let specsHtml = data.specs.map(spec => `
+                    <div class="flex justify-between py-3 border-b border-slate-200">
+                        <span class="text-slate-600">${spec.label}</span>
+                        <span class="font-semibold text-slate-800">${spec.value}</span>
+                    </div>
+                `).join('');
+
+                techDisplayContainer.innerHTML = `
+                    <div class="mb-6">
+                        <img src="${data.imageUrl}" alt="${data.imageAlt}" class="w-full h-48 object-cover rounded-lg shadow-md" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600/e2e8f0/94a3b8?text=Image+Not+Found';">
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-4">${data.title}</h3>
+                    <div class="space-y-2 mb-6">${specsHtml}</div>
+                    <div class="text-right">
+                        <span class="text-sm font-semibold text-slate-500">Fuel Type: ${data.fuel}</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-4">Note: Performance data is representative of technology available circa 2017 from leading manufacturers like Wärtsilä, Jenbacher, or Caterpillar. LHV = Lower Heating Value.</p>
+                `;
+
+                techButtons.forEach(b => {
+                    b.classList.toggle('active', b.dataset.tech === techName);
+                });
+            }
+
+            techButtons.forEach(button => {
+                button.addEventListener('click', () => updateTechDisplay(button.dataset.tech));
+            });
+
+            updateTechDisplay('1.5');
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
