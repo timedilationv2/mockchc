@@ -1,0 +1,99 @@
+        :root {
+            /* New Color Palette: Glossy Shades of Blue */
+            --bg-primary: #f0f4f8;      /* Light, cool gray */
+            --bg-secondary: #ffffff;   /* Clean white for cards */
+            --text-primary: #1e3a8a;   /* Deep navy blue */
+            --text-secondary: #6b7280; /* Muted gray */
+            --color-accent: #0ea5e9;   /* Vibrant cyan */
+            --color-brand: #1e3a8a;    /* Deep navy blue */
+            --border-color: #d1d5db;   /* Soft gray for borders */
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-primary);
+        }
+
+        .bg-primary { background-color: var(--bg-primary); }
+        .bg-secondary { background-color: var(--bg-secondary); }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-accent { color: var(--color-accent); }
+        .text-brand { color: var(--text-brand); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-brand { background-color: var(--color-brand); }
+        .border-default { border-color: var(--border-color); }
+        
+        .bg-accent-light { background-color: rgba(14, 165, 233, 0.1); }
+        .bg-brand-light { background-color: rgba(30, 58, 138, 0.1); }
+
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 8px;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+        
+        .tab.active {
+            background-color: var(--color-brand);
+            color: white;
+        }
+        .tech-button.active {
+            background-color: var(--text-primary);
+            color: var(--bg-secondary);
+        }
+
+        .focusable:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .section-icon {
+            color: var(--color-accent);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .text-stroke { 
+            -webkit-text-stroke: 1px var(--color-accent); 
+            text-stroke: 1px var(--color-accent); 
+            color: transparent; 
+        }
+        
+        /* Decorative line for headings */
+        .heading-decorator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .heading-decorator::before,
+        .heading-decorator::after {
+            content: '';
+            display: block;
+            width: 4rem;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+        .heading-decorator .diamond {
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            background-color: var(--color-accent);
+        }
+        
+        /* Shadow line for subheadings */
+        .subheading-shadow {
+            text-shadow: 1px 1px 2px rgba(30, 58, 138, 0.1);
+        }
+

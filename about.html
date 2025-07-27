@@ -5,24 +5,51 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>About — Arsalan A. Khan</title>
   <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header class="bg-secondary/90 backdrop-blur-lg sticky top-0 z-50 border-b border-default">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 focusable rounded-md">
+                <svg class="h-12 w-12 text-brand flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 50C50 50 71.6667 28.3333 95 50C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M50 50C50 50 28.3333 28.3333 5 50C28.3333 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M50 50C50 50 28.3333 71.6667 50 95C71.6667 71.6667 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M50 50C50 50 28.3333 28.3333 50 5C71.6667 28.3333 50 50 50 50Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                </svg>
+                <div>
+                    <span class="font-heading text-2xl font-bold text-primary">NucleusDojo</span>
+                    <p class="text-xs text-secondary -mt-1">Arsalan A Khan copyright portfolio @timedilationV2</p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-10">
+                <a href="index.html#crisis" class="nav-link text-secondary font-semibold">The Challenge</a>
+                <a href="index.html#solution" class="nav-link text-secondary font-semibold">The Solution</a>
+                <a href="index.html#applications" class="nav-link text-secondary font-semibold">Applications</a>
+                <a href="index.html#technology" class="nav-link text-secondary font-semibold">Technology</a>
+                <a href="about.html" class="nav-link text-secondary font-semibold">About</a>
+                <a href="faq.html" class="nav-link text-secondary font-semibold">FAQs</a>
+                <a href="index.html#contact" class="bg-accent text-white font-semibold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity focusable">Request Assessment</a>
+            </div>
+            <button id="nav-toggle-btn" aria-label="Open main menu" class="md:hidden text-primary focusable rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="nav-menu-content" class="hidden md:hidden bg-secondary">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#crisis" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Challenge</a>
+                <a href="index.html#solution" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">The Solution</a>
+                <a href="index.html#applications" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Applications</a>
+                <a href="index.html#technology" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">Technology</a>
+                <a href="about.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">About</a>
+                <a href="faq.html" class="nav-link text-secondary block px-3 py-2 rounded-md text-base font-semibold">FAQs</a>
+                <a href="index.html#contact" class="bg-accent text-white block w-full text-left mt-2 px-3 py-2 rounded-md text-base font-semibold">Request Assessment</a>
+            </div>
+        </div>
+    </header>
 
-=======
-  <!-- include header -->
->>>>>>> main
-  <header>
-    <div class="nav-container">
-      <h1 class="site-logo"><a href="index.html">Nucleus Dojo</a></h1>
-      <nav>
-        <ul class="site-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="faq.html">FAQs</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
   <main class="about-content">
     <h2>About Arsalan A. Khan</h2>
@@ -49,5 +76,6 @@
       <p>&copy; 2025 Arsalan A. Khan. All rights reserved.</p>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
